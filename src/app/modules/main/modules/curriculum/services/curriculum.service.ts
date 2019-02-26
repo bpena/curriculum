@@ -11,13 +11,20 @@ export class CurriculumService {
     
     constructor(private http: HttpClient) { }
 
-    addCurriculum(cv: Curriculum) {
-        this.http.post(this.url, cv)
-            .subscribe(result => console.log(result));
-    }
-
     getAll() {
         return this.http.get(this.url);
+    }
+
+    getCurriculum(id: String) {
+        return this.http.get(`${this.url}/${id}`);
+    }
+
+    addCurriculum(cv: Curriculum) {
+        return this.http.post(this.url, cv);
+    }
+
+    updateCurriculum(cv: Curriculum) {
+        return this.http.put(`${this.url}/${cv._id}`, cv);
     }
 
 }

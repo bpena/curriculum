@@ -10,7 +10,7 @@ curriculumRoutes.route('/curriculum')
             if (err)
                 console.log(err);
             else
-                res.json(curriculum).end();
+                res.json(curriculum);
         });
     })
     .post((req, res) => {
@@ -18,8 +18,7 @@ curriculumRoutes.route('/curriculum')
         curriculum.save()
             .then(curriculum => {
                 res.status(200)
-                    .json({'curricululm': 'curriculum is added successfully'})
-                    .end();
+                    .json({'curricululm': 'curriculum is added successfully'});
             })
             .catch(err => {
                 res.status(400)
@@ -36,7 +35,8 @@ curriculumRoutes.route('/curriculum/:id')
     })
     .put((req, res) => {
         let id = req.params.id;
-        CurriculumModel.findById(id, (err, curriculum) => {
+        let cv = req.body;
+        CurriculumModel.findOneAndUpdate({_id: id}, cv, (err, curriculum) => {
             res.json(curriculum);
         });
     })

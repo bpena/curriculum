@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="firstname">Nombre:</label>
-                    <input type="text" class="form-control" formControlName="firstname" #firstname>
+                    <input type="text" class="form-control" formControlName="firstname" #firstname [(ngModel)]="curriculum.firstname">
                     <div *ngIf="cvForm.controls['firstname'].invalid && (cvForm.controls['firstname'].dirty || cvForm.controls['firstname'].touched)"
                         class="alert alert-danger">
                         <div *ngIf="cvForm.controls['firstname'].errors.required">
@@ -14,7 +14,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="lastname">Apellido:</label>
-                    <input type="text" class="form-control" formControlName="lastname" #lastname>
+                    <input type="text" class="form-control" formControlName="lastname" #lastname [(ngModel)]="curriculum.lastname">
                     <div *ngIf="cvForm.controls['lastname'].invalid && (cvForm.controls['lastname'].dirty || cvForm.controls['lastname'].touched)"
                         class="alert alert-danger">
                         <div *ngIf="cvForm.controls['lastname'].errors.required">
@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="email">Email:</label>
-                    <input type="email" class="form-control" formControlName="email" #email>
+                    <input type="email" class="form-control" formControlName="email" #email [(ngModel)]="curriculum.email">
                     <div *ngIf="cvForm.controls['email'].invalid && (cvForm.controls['email'].dirty || cvForm.controls['email'].touched)"
                         class="alert alert-danger">
                         <div *ngIf="cvForm.controls['email'].errors.required">
@@ -36,7 +36,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="phone">Teléfono:</label>
-                    <input type="text" class="form-control" formControlName="phone" #phone>
+                    <input type="text" class="form-control" formControlName="phone" #phone [(ngModel)]="curriculum.phone">
                     <div *ngIf="cvForm.controls['phone'].invalid && (cvForm.controls['phone'].dirty || cvForm.controls['phone'].touched)"
                         class="alert alert-danger">
                         <div *ngIf="cvForm.controls['phone'].errors.required">
@@ -47,7 +47,7 @@
             </div>
             <div class="form-group">
                 <label for="address">Dirección:</label>
-                <input type="text" class="form-control" formControlName="address" #address>
+                <input type="text" class="form-control" formControlName="address" #address [(ngModel)]="curriculum.address">
                 <div *ngIf="cvForm.controls['address'].invalid && (cvForm.controls['address'].dirty || cvForm.controls['address'].touched)"
                     class="alert alert-danger">
                     <div *ngIf="cvForm.controls['address'].errors.required">
