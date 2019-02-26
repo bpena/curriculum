@@ -16,7 +16,7 @@
                 <td>{{ cv.lastname }}</td>
                 <td>{{ cv.email }}</td>
                 <td><a [routerLink]="['/curriculum/edit', cv._id]" class="btn btn-primary">Edit</a></td>
-                <td><a [routerLink]="" class="btn btn-danger">Delete</a></td>
+                <td><a [routerLink]="" (click)="delete(cv._id)" class="btn btn-danger">Delete</a></td>
             </tr>
         </tbody>
     </table>

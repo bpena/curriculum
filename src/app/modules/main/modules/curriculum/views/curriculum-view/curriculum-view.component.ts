@@ -20,4 +20,10 @@ export class CurriculumViewComponent implements OnInit {
             })
     }
 
+    delete(id: String) {
+        this.curriculumService.deleteCurriculum(id)
+            .subscribe(result => {
+                console.log('Deleted');
+            })
+    }
 }

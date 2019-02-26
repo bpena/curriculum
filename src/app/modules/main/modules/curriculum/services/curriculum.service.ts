@@ -27,4 +27,8 @@ export class CurriculumService {
         return this.http.put(`${this.url}/${cv._id}`, cv);
     }
 
+    deleteCurriculum(id: String) {
+        return this.http.delete(`${this.url}/${id}`);
+    }
+
 }
