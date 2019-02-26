@@ -14,7 +14,7 @@ export class CurriculumService {
     addCurriculum(cv: Curriculum) {
         console.log(cv);
 
-        this.http.post(`${this.url}/add`, cv)
+        this.http.post(`${this.url}`, cv)
             .subscribe(result => console.log(result));
     }
 }
