@@ -35,7 +35,7 @@ export class CurriculumEditComponent implements OnInit {
         this.route.params.subscribe(params => {
             this.curriculumService.getCurriculum(params['id'])
                 .subscribe(result => {
-                    this.curriculum = result;
+                    this.curriculum = result || {};
                 })
         })
     }
