@@ -9,6 +9,10 @@ const routes: Routes = [
         component: CurriculumViewComponent
     },
     {
+        path: 'new',
+        component: CurriculumEditComponent
+    },
+    {
         path: 'edit/:id',
         component: CurriculumEditComponent
     }
