@@ -7,9 +7,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { CurriculumRoutingModule } from './curriculum-routing.module';
 import { CurriculumEditComponent } from './views/curriculum-edit/curriculum-edit.component';
 import { CurriculumViewComponent } from './views/curriculum-view/curriculum-view.component';
+import { CurriculumDetailComponent } from './views/curriculum-detail/curriculum-detail.component';
 
 @NgModule({
-    declarations: [CurriculumEditComponent, CurriculumViewComponent],
+    declarations: [CurriculumEditComponent, CurriculumViewComponent, CurriculumDetailComponent],
     imports: [
         CommonModule,
         CurriculumRoutingModule,
