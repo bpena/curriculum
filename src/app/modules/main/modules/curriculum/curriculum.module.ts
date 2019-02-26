@@ -1,5 +1,7 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 import { CurriculumRoutingModule } from './curriculum-routing.module';
 import { CurriculumEditComponent } from './views/curriculum-edit/curriculum-edit.component';
@@ -9,7 +11,9 @@ import { CurriculumViewComponent } from './views/curriculum-view/curriculum-view
     declarations: [CurriculumEditComponent, CurriculumViewComponent],
     imports: [
         CommonModule,
-        CurriculumRoutingModule
+        CurriculumRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule
     ]
 })
 export class CurriculumModule { }
