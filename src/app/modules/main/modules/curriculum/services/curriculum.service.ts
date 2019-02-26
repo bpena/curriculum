@@ -12,9 +12,12 @@ export class CurriculumService {
     constructor(private http: HttpClient) { }
 
     addCurriculum(cv: Curriculum) {
-        console.log(cv);
-
-        this.http.post(`${this.url}`, cv)
+        this.http.post(this.url, cv)
             .subscribe(result => console.log(result));
     }
+
+    getAll() {
+        return this.http.get(this.url);
+    }
+
 }
