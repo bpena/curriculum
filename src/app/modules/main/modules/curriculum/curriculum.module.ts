@@ -1,3 +1,4 @@
+import { CurriculumService } from './services/curriculum.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -14,6 +15,7 @@ import { CurriculumViewComponent } from './views/curriculum-view/curriculum-view
         CurriculumRoutingModule,
         HttpClientModule,
         ReactiveFormsModule
-    ]
+    ],
+    providers: [ CurriculumService ]
 })
 export class CurriculumModule { }

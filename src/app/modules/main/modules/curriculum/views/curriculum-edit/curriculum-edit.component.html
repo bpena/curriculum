@@ -55,7 +55,7 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary" [disabled]="cvForm.pristine || cvForm.invalid">Submit</button>
+            <button type="submit" (click)="save()" class="btn btn-primary" [disabled]="cvForm.pristine || cvForm.invalid">Submit</button>
         </form>
     </div>
 </div>

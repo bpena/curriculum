@@ -1,3 +1,4 @@
+import { CurriculumService } from './../../services/curriculum.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -10,7 +11,7 @@ export class CurriculumEditComponent implements OnInit {
 
     public cvForm: FormGroup;
 
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private formBuilder: FormBuilder, private curriculumService: CurriculumService) {
         this.createForm();
     }
 
@@ -25,6 +26,10 @@ export class CurriculumEditComponent implements OnInit {
     }
 
     ngOnInit() {
+    }
+
+    save() {
+        this.curriculumService.addCurriculum(this.cvForm.value);
     }
 
 }
