@@ -1,3 +1,4 @@
+import { TabsModule } from 'ngx-bootstrap/tabs';
 import { CurriculumService } from './services/curriculum.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -15,7 +16,8 @@ import { CurriculumDetailComponent } from './views/curriculum-detail/curriculum-
         CommonModule,
         CurriculumRoutingModule,
         HttpClientModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        TabsModule.forRoot()
     ],
     providers: [ CurriculumService ]
 })
