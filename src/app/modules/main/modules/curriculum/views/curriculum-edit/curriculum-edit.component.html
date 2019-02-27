@@ -1,82 +1,89 @@
 <div class="card">
     <div class="card-body">
-        <div>
-            <tabset type="pills" #staticTabs>
-                <tab heading="Basic title" id="tab1">
-                    <form [formGroup]="cvForm" novalidate>
-                        <div formGroupName="general">
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label for="firstname">Nombre:</label>
-                                    <input type="text" class="form-control" formControlName="firstname" #firstname
-                                        [(ngModel)]="curriculum.firstname">
-                                    <div *ngIf="cvForm.controls['general'].controls['firstname'].invalid && (cvForm.controls['general'].controls['firstname'].dirty || cvForm.controls['general'].controls['firstname'].touched)"
-                                        class="alert alert-danger">
-                                        <div *ngIf="cvForm.controls['general'].controls['firstname'].errors.required">
-                                            El campo nombre es requerido.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="lastname">Apellido:</label>
-                                    <input type="text" class="form-control" formControlName="lastname" #lastname
-                                        [(ngModel)]="curriculum.lastname">
-                                    <div *ngIf="cvForm.controls['general'].controls['lastname'].invalid && (cvForm.controls['general'].controls['lastname'].dirty || cvForm.controls['general'].controls['lastname'].touched)"
-                                        class="alert alert-danger">
-                                        <div *ngIf="cvForm.controls['general'].controls['lastname'].errors.required">
-                                            El campo apellido es requerido.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label for="email">Email:</label>
-                                    <input type="email" class="form-control" formControlName="email" #email
-                                        [(ngModel)]="curriculum.email">
-                                    <div *ngIf="cvForm.controls['general'].controls['email'].invalid && (cvForm.controls['general'].controls['email'].dirty || cvForm.controls['general'].controls['email'].touched)"
-                                        class="alert alert-danger">
-                                        <div *ngIf="cvForm.controls['general'].controls['email'].errors.required">
-                                            El campo email es requerido.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="phone">Teléfono:</label>
-                                    <input type="text" class="form-control" formControlName="phone" #phone
-                                        [(ngModel)]="curriculum.phone">
-                                    <div *ngIf="cvForm.controls['general'].controls['phone'].invalid && (cvForm.controls['general'].controls['phone'].dirty || cvForm.controls['general'].controls['phone'].touched)"
-                                        class="alert alert-danger">
-                                        <div *ngIf="cvForm.controls['general'].controls['phone'].errors.required">
-                                            El campo teléfono es requerido.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="address">Dirección:</label>
-                                <input type="text" class="form-control" formControlName="address" #address
-                                    [(ngModel)]="curriculum.address">
-                                <div *ngIf="cvForm.controls['general'].controls['address'].invalid && (cvForm.controls['general'].controls['address'].dirty || cvForm.controls['general'].controls['address'].touched)"
-                                    class="alert alert-danger">
-                                    <div *ngIf="cvForm.controls['general'].controls['address'].errors.required">
-                                        El campo dirección es requerida.
-                                    </div>
+        <form [formGroup]="cvForm" novalidate>
+            <tabset #staticTabs>
+                <tab heading="General" id="tab1" formGroupName="general">
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="firstname">Nombre:</label>
+                            <input type="text" class="form-control" formControlName="firstname" #firstname
+                                [(ngModel)]="curriculum.firstname">
+                            <div *ngIf="cvForm.controls['general'].controls['firstname'].invalid && (cvForm.controls['general'].controls['firstname'].dirty || cvForm.controls['general'].controls['firstname'].touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="cvForm.controls['general'].controls['firstname'].errors.required">
+                                    El campo nombre es requerido.
                                 </div>
                             </div>
                         </div>
-                        <button type="button" (click)="gotoNext()" class="btn btn-primary"
-                            [disabled]="cvForm['controls'].general.pristine || cvForm['controls'].general.invalid">Submit</button>
-                    </form>
+                        <div class="form-group col-md-6">
+                            <label for="lastname">Apellido:</label>
+                            <input type="text" class="form-control" formControlName="lastname" #lastname
+                                [(ngModel)]="curriculum.lastname">
+                            <div *ngIf="cvForm.controls['general'].controls['lastname'].invalid && (cvForm.controls['general'].controls['lastname'].dirty || cvForm.controls['general'].controls['lastname'].touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="cvForm.controls['general'].controls['lastname'].errors.required">
+                                    El campo apellido es requerido.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" formControlName="email" #email
+                                [(ngModel)]="curriculum.email">
+                            <div *ngIf="cvForm.controls['general'].controls['email'].invalid && (cvForm.controls['general'].controls['email'].dirty || cvForm.controls['general'].controls['email'].touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="cvForm.controls['general'].controls['email'].errors.required">
+                                    El campo email es requerido.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="phone">Teléfono:</label>
+                            <input type="text" class="form-control" formControlName="phone" #phone
+                                [(ngModel)]="curriculum.phone">
+                            <div *ngIf="cvForm.controls['general'].controls['phone'].invalid && (cvForm.controls['general'].controls['phone'].dirty || cvForm.controls['general'].controls['phone'].touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="cvForm.controls['general'].controls['phone'].errors.required">
+                                    El campo teléfono es requerido.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Dirección:</label>
+                        <input type="text" class="form-control" formControlName="address" #address
+                            [(ngModel)]="curriculum.address">
+                        <div *ngIf="cvForm.controls['general'].controls['address'].invalid && (cvForm.controls['general'].controls['address'].dirty || cvForm.controls['general'].controls['address'].touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="cvForm.controls['general'].controls['address'].errors.required">
+                                El campo dirección es requerida.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="summary">Extracto:</label>
+                        <textarea class="form-control" formControlName="summary" #summary rows="5"
+                            [(ngModel)]="curriculum.summary"></textarea>
+                        <div *ngIf="cvForm.controls['general'].controls['summary'].invalid && (cvForm.controls['general'].controls['summary'].dirty || cvForm.controls['general'].controls['summary'].touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="cvForm.controls['general'].controls['summary'].errors.required">
+                                El campo extracto es requerido.
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" (click)="gotoNext()" class="btn btn-primary"
+                        [disabled]="cvForm['controls'].general.pristine || cvForm['controls'].general.invalid">Submit</button>
                 </tab>
-                <tab heading="Basic Title 1">Basic content 1
+                <tab heading="Experiencia">
 
                     <button type="button" (click)="gotoPrev()" class="btn btn-primary"
                         [disabled]="cvForm.pristine || cvForm.invalid">Anterior</button>
                 </tab>
                 <tab heading="Basic Title 2">Basic content 2</tab>
             </tabset>
-        </div>
-
+        </form>
     </div>
 </div>

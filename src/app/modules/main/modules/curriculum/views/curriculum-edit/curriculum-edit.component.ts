@@ -50,6 +50,7 @@ export class CurriculumEditComponent implements OnInit {
                 email: ['', Validators.required],
                 phone: ['', Validators.required],
                 address: ['', Validators.required],
+                summary: ['', Validators.required]
             })
         })
     }
