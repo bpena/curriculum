@@ -1,0 +1,199 @@
+:host {
+    h4 {
+        font-size: 20px;
+        padding-bottom: 10px;
+        text-transform: uppercase;
+    }
+
+    header {
+        display: flex;
+        position: relative;
+
+        section {
+            margin-bottom: 0;
+            padding-right: 0;
+
+            &.main {
+                font-size: 1.1em;
+                font-weight: 400 !important;
+                padding-top: 30px;
+
+                h4 {
+                    margin-bottom: 0;
+                }
+
+                hr {
+                    border-top: 4px #25b5e4 solid;
+                    margin-bottom: 0;
+                    margin-top: 0;
+                    display: block;
+                    width: 100px;
+                    float: left;
+                }
+            }
+        }
+
+        .general {
+            bottom: 0;
+            position: absolute;
+
+            .name {
+                background-color: rgba(37, 181, 288, 0.75);
+                color: white;
+                display: inline-block;
+                padding: 10px 70px 10px 50px;
+                text-transform: uppercase;
+                -webkit-print-color-adjust: exact;
+
+                h1 {
+                    line-height: 1;
+                    margin-bottom: 0;
+                }
+
+                h5 {
+                    font-size: 1.37rem;
+                    margin-bottom: 0;
+                }
+            }
+
+            .additional {
+                display: inline-block;
+                font-size: 0.9em;
+                font-weight: 300;
+                padding-left: 20px;
+                position: absolute;
+                top: 1px;
+                width: 550px;
+
+                span {
+                    line-height: 23px;
+                }
+
+                i {
+                    font-size: 1.7em;
+                    width: 24px;
+                    color: #25b5e4;
+                }
+            }
+        }
+    }
+
+    .wrapper {
+        display: flex;
+    }
+
+    .section {
+        margin-bottom: 30px;
+        padding: 30px;
+    }
+
+    aside {
+        background-color: #efefef;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        font-size: 0.75em;
+        max-width: 350px;
+        min-width: 350px;
+        -webkit-print-color-adjust: exact;
+
+        .fa {
+            font-size: 1.6em;
+        }
+
+        section {
+            &.image {
+                background-color: #414141;
+                height: 350px;
+                padding: 0;
+                -webkit-print-color-adjust: exact;
+
+                img {
+                    height: 350px;
+                    width: 350px;
+                }
+            }
+
+            h4 {
+                border-bottom: 4px #25b5e4 solid;
+            }
+        }
+    }
+
+    .skill {
+        margin-bottom: 5px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .skill-name {
+        display: inline-block;
+        width: 25%;
+    }
+
+    .skill-level-wrapper {
+        background-color: #efefef;
+        display: inline-block;
+        height: 1em;
+        width: 75%;
+        -webkit-print-color-adjust: exact;
+
+        .skill-level {
+            display: block;
+            height: 1em;
+            -webkit-print-color-adjust: exact;
+        }
+        .skill-level-9 {
+            background-color: #25b5e4;
+            width: 90%;
+        }
+        .skill-level-8 {
+            background-color: #25b5e4;
+            width: 80%;
+        }
+        .skill-level-7 {
+            background-color: #25b5e4;
+            width: 70%;
+        }
+        .skill-level-6 {
+            background-color: #25b5e4;
+            width: 60%;
+        }
+    }
+
+    .main {
+        font-size: 0.9em;
+        font-weight: 300;
+        margin-bottom: 0;
+        padding: 0;
+        padding-left: 15px;
+
+        section {
+            margin-bottom: 0;
+            padding-left: 0;
+            padding-right: 0;
+
+            h4 {
+                margin-bottom: 0;
+            }
+
+            hr {
+                border-top: 4px #25b5e4 solid;
+                margin-bottom: 0;
+                margin-top: 0;
+                display: block;
+                width: 100px;
+                float: left;
+            }
+
+            article {
+                h6 {
+                    color: #25b5e4;
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}

@@ -1,7 +1,7 @@
 export const NETWORK = [
-    { icon: '', name: 'facebook' },
-    { icon: '', name: 'twitter' },
-    { icon: '', name: 'linkedin' },
-    { icon: '', name: 'instagram' },
-    { icon: '', name: 'github' }
+    { icon: 'fa fa-facebook', name: 'facebook' },
+    { icon: 'fa fa-twitter', name: 'twitter' },
+    { icon: 'fa fa-linkedin', name: 'linkedin' },
+    { icon: 'fa fa-instagram', name: 'instagram' },
+    { icon: 'fa fa-github', name: 'github' }
 ]
