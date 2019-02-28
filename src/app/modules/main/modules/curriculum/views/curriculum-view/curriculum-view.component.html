@@ -9,7 +9,7 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Email</th>
-                <th colspan="2">Actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -17,8 +17,18 @@
                 <td>{{ cv.firstname }}</td>
                 <td>{{ cv.lastname }}</td>
                 <td>{{ cv.email }}</td>
-                <td><a [routerLink]="['/curriculum/edit', cv._id]" class="btn btn-primary">Edit</a></td>
-                <td><a [routerLink]="" (click)="delete(cv._id)" class="btn btn-danger">Delete</a></td>
+                <td>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><a [routerLink]="['/curriculum/edit', cv._id]" class="btn btn-primary">Edit</a></td>
+                                <td><a [routerLink]="" (click)="delete(cv._id)" class="btn btn-danger">Delete</a></td>
+                                <td><a [routerLink]="['/curriculum/detail', cv._id]" class="btn btn-secondary">Ver</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
             </tr>
         </tbody>
     </table>
