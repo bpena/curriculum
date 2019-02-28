@@ -1,337 +1,346 @@
-<div class="card">
-    <div class="card-body">
-        <form [formGroup]="cvForm" novalidate>
-            <tabset #staticTabs>
-                <!-- Start General Tab -->
-                <tab heading="General" id="tab1">
-                    <div class="my-2 clearfix">
-                        <div class="btn-group float-right">
-                            <button type="button" (click)="gotoNext()" class="btn btn-primary">Siguiente</button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label for="firstname">Nombre:</label>
-                            <input type="text" class="form-control" formControlName="firstname" placeholder="Nombre"
-                                #firstname>
-                            <div *ngIf="cvForm.controls['firstname'].invalid && (cvForm.controls['firstname'].dirty || cvForm.controls['firstname'].touched)"
-                                class="alert alert-danger">
-                                <div *ngIf="cvForm.controls['firstname'].errors.required">
-                                    El campo nombre es requerido.
-                                </div>
+<div class="container">
+    <h2>Curriculum</h2>
+    <div class="card">
+        <div class="card-body">
+            <form [formGroup]="cvForm" novalidate>
+                <tabset #staticTabs>
+                    <!-- Start General Tab -->
+                    <tab heading="General" id="tab1">
+                        <div class="my-2 clearfix">
+                            <div class="btn-group float-right">
+                                <button type="button" (click)="gotoNext()" class="btn btn-primary">Siguiente</button>
                             </div>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="lastname">Apellido:</label>
-                            <input type="text" class="form-control" formControlName="lastname" placeholder="Apellido"
-                                #lastname>
-                            <div *ngIf="cvForm.controls['lastname'].invalid && (cvForm.controls['lastname'].dirty || cvForm.controls['lastname'].touched)"
-                                class="alert alert-danger">
-                                <div *ngIf="cvForm.controls['lastname'].errors.required">
-                                    El campo apellido es requerido.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label for="email">Email:</label>
-                            <input type="email" class="form-control" formControlName="email" placeholder="mi@email"
-                                #email>
-                            <div *ngIf="cvForm.controls['email'].invalid && (cvForm.controls['email'].dirty || cvForm.controls['email'].touched)"
-                                class="alert alert-danger">
-                                <div *ngIf="cvForm.controls['email'].errors.required">
-                                    El campo email es requerido.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="phone">Teléfono:</label>
-                            <input type="text" class="form-control" formControlName="phone" placeholder="Teléfono"
-                                #phone>
-                            <div *ngIf="cvForm.controls['phone'].invalid && (cvForm.controls['phone'].dirty || cvForm.controls['phone'].touched)"
-                                class="alert alert-danger">
-                                <div *ngIf="cvForm.controls['phone'].errors.required">
-                                    El campo teléfono es requerido.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="address">Dirección:</label>
-                        <input type="text" class="form-control" formControlName="address" placeholder="Dirección"
-                            #address>
-                        <div *ngIf="cvForm.controls['address'].invalid && (cvForm.controls['address'].dirty || cvForm.controls['address'].touched)"
-                            class="alert alert-danger">
-                            <div *ngIf="cvForm.controls['address'].errors.required">
-                                El campo dirección es requerida.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="summary">Extracto:</label>
-                        <textarea class="form-control" formControlName="summary" placeholder="Agrega una breve reseña"
-                            #summary rows="5"></textarea>
-                        <div *ngIf="cvForm.controls['summary'].invalid && (cvForm.controls['summary'].dirty || cvForm.controls['summary'].touched)"
-                            class="alert alert-danger">
-                            <div *ngIf="cvForm.controls['summary'].errors.required">
-                                El campo extracto es requerido.
-                            </div>
-                        </div>
-                    </div>
-                </tab>
-                <!-- End General Tab -->
-                <!-- Start Jobs Tab -->
-                <tab heading="Experiencia" id="tab2">
-                    <div class="my-2 clearfix">
-                        <button type="button" (click)="addJob()" class="btn btn-primary float-left">Agregar</button>
-                        <div class="btn-group float-right">
-                            <button type="button" (click)="gotoPrev()" class="btn bg-light">Anterior</button>
-                            <button type="button" (click)="gotoNext()" class="btn btn-primary">Siguiente</button>
-                        </div>
-                    </div>
-                    <div class="card" formArrayName="jobs"
-                        *ngFor="let job of cvForm.controls['jobs'].controls; let i = index">
-                        <div class="card-header">
-                            <span class="badge badge-dark p-2">{{ i + 1 }}</span>
-                            <button type="button" class="btn btn-danger btn-sm float-right"
-                                (click)="removeFormArrayItem('jobs', i)">
-                                remover
-                            </button>
-                        </div>
-                        <div class="card-body" [formGroupName]="i">
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label for="company">Empresa:</label>
-                                    <input type="text" class="form-control" formControlName="company" #company>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="position">Cargo:</label>
-                                    <input type="text" class="form-control" formControlName="position"
-                                        placeholder="Cargo desempeñado" #position>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label>Fecha Inicio:</label>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <select class="form-control" formControlName="startMonth" #startMonth>
-                                                <option disabled selected value="">Mes</option>
-                                                <option *ngFor="let month of months" value="{{ month }}">{{ month }}
-                                                </option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <select class="form-control" formControlName="endYear" #endYear>
-                                                <option disabled selected value="">Año</option>
-                                                <option *ngFor="let year of years" value="{{ year }}">{{ year }}
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Fecha Fin:</label>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <select class="form-control" formControlName="endMonth" #endMonth>
-                                                <option disabled selected value="">Mes</option>
-                                                <option *ngFor="let month of months" value="{{ month }}">{{ month }}
-                                                </option>
-                                            </select>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <select class="form-control" formControlName="endYear" #endYear>
-                                                <option disabled selected value="">Año</option>
-                                                <option *ngFor="let year of years" value="{{ year }}">{{ year }}
-                                                </option>
-                                            </select>
-                                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="firstname">Nombre:</label>
+                                <input type="text" class="form-control" formControlName="firstname" placeholder="Nombre"
+                                    #firstname>
+                                <div *ngIf="cvForm.controls['firstname'].invalid && (cvForm.controls['firstname'].dirty || cvForm.controls['firstname'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="cvForm.controls['firstname'].errors.required">
+                                        El campo nombre es requerido.
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="description">Descripción:</label>
-                                <textarea class="form-control" formControlName="description" placeholder="Descripción"
-                                    #description rows="5"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </tab>
-                <!-- End Jobs Tab -->
-                <!-- Start Degree Tab -->
-                <tab heading="Estudios" id="tab2">
-                    <div class="my-2 clearfix">
-                        <button type="button" (click)="addDegree()" class="btn btn-primary float-left">Agregar</button>
-                        <div class="btn-group float-right">
-                            <button type="button" (click)="gotoPrev()" class="btn bg-light">Anterior</button>
-                            <button type="button" (click)="gotoNext()" class="btn btn-primary">Siguiente</button>
-                        </div>
-                    </div>
-                    <div class="card" formArrayName="degrees"
-                        *ngFor="let degree of cvForm.controls['degrees'].controls; let i = index">
-                        <div class="card-header">
-                            <span class="badge badge-dark p-2">{{ i + 1 }}</span>
-                            <button type="button" class="btn btn-danger btn-sm float-right"
-                                (click)="removeFormArrayItem('degrees', i)">
-                                remover
-                            </button>
-                        </div>
-
-                        <div class="card-body" [formGroupName]="i">
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label for="institute">Instituto:</label>
-                                    <input type="text" class="form-control" formControlName="institute" #institute>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="address">Dirección:</label>
-                                    <input type="text" class="form-control" formControlName="address"
-                                        placeholder="Dirección" #address>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label for="title">Titulo Obtenido:</label>
-                                    <input type="text" class="form-control" formControlName="title" #institute>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label for="startYear">Año Inicio:</label>
-                                            <select class="form-control" formControlName="startYear" #startYear>
-                                                <option disabled selected value="">Año</option>
-                                                <option *ngFor="let year of years" value="{{ year }}">{{ year }}
-                                                </option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="endYear">Año Fin:</label>
-                                            <select class="form-control" formControlName="endYear" #endYear>
-                                                <option disabled selected value="">Año</option>
-                                                <option *ngFor="let year of years" value="{{ year }}">{{ year }}
-                                                </option>
-                                            </select>
-                                        </div>
+                            <div class="form-group col-md-6">
+                                <label for="lastname">Apellido:</label>
+                                <input type="text" class="form-control" formControlName="lastname"
+                                    placeholder="Apellido" #lastname>
+                                <div *ngIf="cvForm.controls['lastname'].invalid && (cvForm.controls['lastname'].dirty || cvForm.controls['lastname'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="cvForm.controls['lastname'].errors.required">
+                                        El campo apellido es requerido.
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </tab>
-                <!-- End Degree Tab -->
-                <!-- Start Skill Tab -->
-                <tab heading="Habilidades" id="tab3">
-                    <div class="my-2 clearfix">
-                        <button type="button" (click)="addSkill()" class="btn btn-primary float-left">Agregar</button>
-                        <div class="btn-group float-right">
-                            <button type="button" (click)="gotoPrev()" class="btn bg-light">Anterior</button>
-                            <button type="button" (click)="gotoNext()" class="btn btn-primary">Guardar</button>
-                        </div>
-                    </div>
-
-                    <div class="card" formArrayName="skills"
-                        *ngFor="let skill of cvForm.controls['skills'].controls; let i = index">
-                        <div class="card-body" [formGroupName]="i">
-                            <div class="row">
-                                <div class="col-md-1">
-                                    <span class="badge badge-dark p-2">{{ i + 1 }}</span>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" formControlName="email" placeholder="mi@email"
+                                    #email>
+                                <div *ngIf="cvForm.controls['email'].invalid && (cvForm.controls['email'].dirty || cvForm.controls['email'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="cvForm.controls['email'].errors.required">
+                                        El campo email es requerido.
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <input type="text" class="form-control" formControlName="name"
-                                        placeholder="Habilidad" #hobbie>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <input type="text" class="form-control" formControlName="level" placeholder="level"
-                                        #level>
-                                </div>
-                                <div class="col-md-1">
-                                    <button type="button" class="btn btn-danger btn-sm float-right"
-                                        (click)="removeFormArrayItem('skills', i)">
-                                        remover
-                                    </button>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="phone">Teléfono:</label>
+                                <input type="text" class="form-control" formControlName="phone" placeholder="Teléfono"
+                                    #phone>
+                                <div *ngIf="cvForm.controls['phone'].invalid && (cvForm.controls['phone'].dirty || cvForm.controls['phone'].touched)"
+                                    class="alert alert-danger">
+                                    <div *ngIf="cvForm.controls['phone'].errors.required">
+                                        El campo teléfono es requerido.
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </tab>
-                <!-- End Skill Tab -->
-                <!-- Start Hobbie Tab -->
-                <tab heading="Aficiones" id="tab4">
-                    <div class="my-2 clearfix">
-                        <button type="button" (click)="addHobbie()" class="btn btn-primary float-left">Agregar</button>
-                        <div class="btn-group float-right">
-                            <button type="button" (click)="gotoPrev()" class="btn bg-light">Anterior</button>
-                            <button type="button" (click)="gotoNext()" class="btn btn-primary">Siguiente</button>
-                        </div>
-                    </div>
-
-                    <div class="card" formArrayName="hobbies"
-                        *ngFor="let Hobbie of cvForm.controls['hobbies'].controls; let i = index">
-                        <div class="card-body" [formGroupName]="i">
-                            <div class="row">
-                                <div class="col-md-1">
-                                    <span class="badge badge-dark p-2">{{ i + 1 }}</span>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <input type="text" class="form-control" formControlName="hobbie"
-                                        placeholder="Afición" #hobbie>
-                                </div>
-                                <div class="form-group col-md-4">
-                                </div>
-                                <div class="col-md-1">
-                                    <button type="button" class="btn btn-danger btn-sm float-right"
-                                        (click)="removeFormArrayItem('hobbies', i)">
-                                        remover
-                                    </button>
+                        <div class="form-group">
+                            <label for="address">Dirección:</label>
+                            <input type="text" class="form-control" formControlName="address" placeholder="Dirección"
+                                #address>
+                            <div *ngIf="cvForm.controls['address'].invalid && (cvForm.controls['address'].dirty || cvForm.controls['address'].touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="cvForm.controls['address'].errors.required">
+                                    El campo dirección es requerida.
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </tab>
-                <!-- End Hobbie Tab -->
-                <!-- Start Network Tab -->
-                <tab heading="Redes" id="tab4">
-                    <div class="my-2 clearfix">
-                        <button type="button" (click)="addNetwork()" class="btn btn-primary float-left">Agregar</button>
-                        <div class="btn-group float-right">
-                            <button type="button" (click)="gotoPrev()" class="btn bg-light">Anterior</button>
-                            <button type="button" (click)="save()" class="btn btn-primary">Guardar</button>
-                        </div>
-                    </div>
-
-                    <div class="card" formArrayName="networks"
-                        *ngFor="let Network of cvForm.controls['networks'].controls; let i = index">
-                        <div class="card-body" [formGroupName]="i">
-                            <div class="row">
-                                <div class="col-md-1">
-                                    <span class="badge badge-dark p-2">{{ i + 1 }}</span>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <select class="form-control" formControlName="name" #name>
-                                        <option disabled selected value="">Redes</option>
-                                        <option *ngFor="let network of netwotks" value="{{ network.name }}">{{ network.name }}
-                                        </option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <input type="text" class="form-control" formControlName="url" placeholder="URL"
-                                        #url>
-                                </div>
-                                <div class="col-md-1">
-                                    <button type="button" class="btn btn-danger btn-sm float-right"
-                                        (click)="removeFormArrayItem('networks', i)">
-                                        remover
-                                    </button>
+                        <div class="form-group">
+                            <label for="summary">Extracto:</label>
+                            <textarea class="form-control" formControlName="summary"
+                                placeholder="Agrega una breve reseña" #summary rows="5"></textarea>
+                            <div *ngIf="cvForm.controls['summary'].invalid && (cvForm.controls['summary'].dirty || cvForm.controls['summary'].touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="cvForm.controls['summary'].errors.required">
+                                    El campo extracto es requerido.
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </tab>
-                <!-- End Hobbie Tab -->
-            </tabset>
-        </form>
+                    </tab>
+                    <!-- End General Tab -->
+                    <!-- Start Jobs Tab -->
+                    <tab heading="Experiencia" id="tab2">
+                        <div class="my-2 clearfix">
+                            <button type="button" (click)="addJob()" class="btn btn-primary float-left">Agregar</button>
+                            <div class="btn-group float-right">
+                                <button type="button" (click)="gotoPrev()" class="btn bg-light">Anterior</button>
+                                <button type="button" (click)="gotoNext()" class="btn btn-primary">Siguiente</button>
+                            </div>
+                        </div>
+                        <div class="card" formArrayName="jobs"
+                            *ngFor="let job of cvForm.controls['jobs'].controls; let i = index">
+                            <div class="card-header">
+                                <span class="badge badge-dark p-2">{{ i + 1 }}</span>
+                                <button type="button" class="btn btn-danger btn-sm float-right"
+                                    (click)="removeFormArrayItem('jobs', i)">
+                                    remover
+                                </button>
+                            </div>
+                            <div class="card-body" [formGroupName]="i">
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="company">Empresa:</label>
+                                        <input type="text" class="form-control" formControlName="company" #company>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="position">Cargo:</label>
+                                        <input type="text" class="form-control" formControlName="position"
+                                            placeholder="Cargo desempeñado" #position>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label>Fecha Inicio:</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <select class="form-control" formControlName="startMonth" #startMonth>
+                                                    <option disabled selected value="">Mes</option>
+                                                    <option *ngFor="let month of months" value="{{ month }}">{{ month }}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <select class="form-control" formControlName="startYear" #startYear>
+                                                    <option disabled selected value="">Año</option>
+                                                    <option *ngFor="let year of years" value="{{ year }}">{{ year }}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Fecha Fin:</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <select class="form-control" formControlName="endMonth" #endMonth>
+                                                    <option disabled selected value="">Mes</option>
+                                                    <option *ngFor="let month of months" value="{{ month }}">{{ month }}
+                                                    </option>
+                                                </select>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <select class="form-control" formControlName="endYear" #endYear>
+                                                    <option disabled selected value="">Año</option>
+                                                    <option *ngFor="let year of years" value="{{ year }}">{{ year }}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Descripción:</label>
+                                    <textarea class="form-control" formControlName="description"
+                                        placeholder="Descripción" #description rows="5"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </tab>
+                    <!-- End Jobs Tab -->
+                    <!-- Start Degree Tab -->
+                    <tab heading="Estudios" id="tab2">
+                        <div class="my-2 clearfix">
+                            <button type="button" (click)="addDegree()"
+                                class="btn btn-primary float-left">Agregar</button>
+                            <div class="btn-group float-right">
+                                <button type="button" (click)="gotoPrev()" class="btn bg-light">Anterior</button>
+                                <button type="button" (click)="gotoNext()" class="btn btn-primary">Siguiente</button>
+                            </div>
+                        </div>
+                        <div class="card" formArrayName="degrees"
+                            *ngFor="let degree of cvForm.controls['degrees'].controls; let i = index">
+                            <div class="card-header">
+                                <span class="badge badge-dark p-2">{{ i + 1 }}</span>
+                                <button type="button" class="btn btn-danger btn-sm float-right"
+                                    (click)="removeFormArrayItem('degrees', i)">
+                                    remover
+                                </button>
+                            </div>
+
+                            <div class="card-body" [formGroupName]="i">
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="institute">Instituto:</label>
+                                        <input type="text" class="form-control" formControlName="institute" #institute>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="address">Dirección:</label>
+                                        <input type="text" class="form-control" formControlName="address"
+                                            placeholder="Dirección" #address>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="title">Titulo Obtenido:</label>
+                                        <input type="text" class="form-control" formControlName="title" #institute>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="startYear">Año Inicio:</label>
+                                                <select class="form-control" formControlName="startYear" #startYear>
+                                                    <option disabled selected value="">Año</option>
+                                                    <option *ngFor="let year of years" value="{{ year }}">{{ year }}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="endYear">Año Fin:</label>
+                                                <select class="form-control" formControlName="endYear" #endYear>
+                                                    <option disabled selected value="">Año</option>
+                                                    <option *ngFor="let year of years" value="{{ year }}">{{ year }}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tab>
+                    <!-- End Degree Tab -->
+                    <!-- Start Skill Tab -->
+                    <tab heading="Habilidades" id="tab3">
+                        <div class="my-2 clearfix">
+                            <button type="button" (click)="addSkill()"
+                                class="btn btn-primary float-left">Agregar</button>
+                            <div class="btn-group float-right">
+                                <button type="button" (click)="gotoPrev()" class="btn bg-light">Anterior</button>
+                                <button type="button" (click)="gotoNext()" class="btn btn-primary">Siguiente</button>
+                            </div>
+                        </div>
+
+                        <div class="card" formArrayName="skills"
+                            *ngFor="let skill of cvForm.controls['skills'].controls; let i = index">
+                            <div class="card-body" [formGroupName]="i">
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <span class="badge badge-dark p-2">{{ i + 1 }}</span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input type="text" class="form-control" formControlName="name"
+                                            placeholder="Habilidad" #hobbie>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <input type="text" class="form-control" formControlName="level"
+                                            placeholder="level" #level>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="button" class="btn btn-danger btn-sm float-right"
+                                            (click)="removeFormArrayItem('skills', i)">
+                                            remover
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tab>
+                    <!-- End Skill Tab -->
+                    <!-- Start Hobbie Tab -->
+                    <tab heading="Aficiones" id="tab4">
+                        <div class="my-2 clearfix">
+                            <button type="button" (click)="addHobbie()"
+                                class="btn btn-primary float-left">Agregar</button>
+                            <div class="btn-group float-right">
+                                <button type="button" (click)="gotoPrev()" class="btn bg-light">Anterior</button>
+                                <button type="button" (click)="gotoNext()" class="btn btn-primary">Siguiente</button>
+                            </div>
+                        </div>
+
+                        <div class="card" formArrayName="hobbies"
+                            *ngFor="let Hobbie of cvForm.controls['hobbies'].controls; let i = index">
+                            <div class="card-body" [formGroupName]="i">
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <span class="badge badge-dark p-2">{{ i + 1 }}</span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input type="text" class="form-control" formControlName="hobbie"
+                                            placeholder="Afición" #hobbie>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="button" class="btn btn-danger btn-sm float-right"
+                                            (click)="removeFormArrayItem('hobbies', i)">
+                                            remover
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tab>
+                    <!-- End Hobbie Tab -->
+                    <!-- Start Network Tab -->
+                    <tab heading="Redes" id="tab4">
+                        <div class="my-2 clearfix">
+                            <button type="button" (click)="addNetwork()"
+                                class="btn btn-primary float-left">Agregar</button>
+                            <div class="btn-group float-right">
+                                <button type="button" (click)="gotoPrev()" class="btn bg-light">Anterior</button>
+                                <button type="button" (click)="save()" class="btn btn-primary">Guardar</button>
+                            </div>
+                        </div>
+
+                        <div class="card" formArrayName="networks"
+                            *ngFor="let Network of cvForm.controls['networks'].controls; let i = index">
+                            <div class="card-body" [formGroupName]="i">
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <span class="badge badge-dark p-2">{{ i + 1 }}</span>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <select class="form-control" formControlName="name" #name
+                                            (change)="onSelectNetwork(i, $event)">
+                                            <option disabled selected value="">Redes</option>
+                                            <option *ngFor="let network of netwotks" value="{{ network.name }}">
+                                                {{ network.name }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input type="text" class="form-control" formControlName="url" placeholder="URL"
+                                            #url>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="button" class="btn btn-danger btn-sm float-right"
+                                            (click)="removeFormArrayItem('networks', i)">
+                                            remover
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tab>
+                    <!-- End Hobbie Tab -->
+                </tabset>
+            </form>
+        </div>
     </div>
 </div>

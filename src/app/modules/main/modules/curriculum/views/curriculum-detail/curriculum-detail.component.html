@@ -1,3 +1,72 @@
-<p>
-  curriculum-detail works!
-</p>
+<header>
+    <aside>
+        <section class="image">
+            <img src="/assets/foto.jpeg" alt="" srcset="">
+        </section>
+    </aside>
+    <section class="main">
+        <article>
+            <h4>Extracto</h4>
+            <hr><br>
+            <p>{{ curriculum?.summary }}</p>
+        </article>
+    </section>
+    <section class="general">
+        <div class="name">
+            <h1>{{ curriculum?.firstname }} {{ curriculum?.lastname }}</h1>
+            <h5>Licenciado en Computación</h5>
+        </div>
+        <div class="additional">
+            <span><i class="fa fa-map-marker"></i> {{ curriculum?.address }}</span> <br>
+            <span><i class="fa fa-phone"></i> {{ curriculum?.phone }}</span> <br>
+            <span><i class="fa fa-at"></i> {{ curriculum?.email }}</span>
+        </div>
+    </section>
+</header>
+<div class="wrapper">
+    <aside>
+        <section class="section">
+            <h4>Educación</h4>
+            <article *ngFor="let degree of curriculum?.degrees">
+                <h6>{{ degree.startYear }} - {{ degree.endYear }}</h6>
+                <h6>{{ degree.title }}</h6>
+                {{ degree.institute }} <br>
+                {{ degree.address }}
+            </article>
+        </section>
+
+        <section class="section">
+            <h4>Redes Sociales</h4>
+            <article *ngFor="let network of curriculum?.networks">
+                <strong><i class="{{ network.icon }}"></i> {{ network.name }}:</strong> {{ network.url }}
+            </article>
+        </section>
+    </aside>
+    <section class="main">
+        <section class="section">
+            <h4>Experiencia</h4>
+            <hr><br>
+            <article *ngFor="let job of curriculum?.jobs">
+                <h6>{{ job.position }} - {{ job.company }}</h6>
+                <strong>{{ job.startMonth }} {{ job.startYear }} -
+                    {{ (job.endYear && job.endMonth) ? (job.endMonth + ' ' + job.endYear) : 'Act.' }}</strong>
+                <p>{{ job.description }}</p>
+            </article>
+        </section>
+
+        <section class="section">
+            <h4>Habilidades</h4>
+            <hr><br>
+            <article *ngFor="let skill of curriculum?.skills" class="skill">
+                <span class="skill-name">{{ skill.name }}</span> <span class="skill-level-wrapper"><span
+                        class="skill-level skill-level-{{ skill.level }}"></span></span>
+            </article>
+        </section>
+
+        <section class="section">
+            <h4>Aficiones</h4>
+            <hr><br>
+            <span class="hobbies">{{ getHobbies() }}</span>
+        </section>
+    </section>
+</div>

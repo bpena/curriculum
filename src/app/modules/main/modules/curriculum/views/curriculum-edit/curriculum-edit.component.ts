@@ -171,4 +171,13 @@ export class CurriculumEditComponent implements OnInit {
     removeFormArrayItem(formArrayName: string, index: number) {
         (this.cvForm.get(formArrayName) as FormArray).removeAt(index);
     }
+
+    onSelectNetwork(index: number, event: any) {
+        console.log(index);
+        console.log(event.target.selectedIndex);
+        console.log(this.netwotks[event.target.selectedIndex-1]);
+        const network = this.netwotks[event.target.selectedIndex-1];
+        (this.cvForm.get('networks') as FormArray).get(index.toString()).get('icon').setValue(network.icon);
+        
+    }
 }
