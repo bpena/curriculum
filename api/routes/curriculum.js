@@ -42,7 +42,7 @@ curriculumRoutes.route('/curriculum/:id')
     })
     .delete((req, res) => {
         let id = req.params.id;
-        CurriculumModel.findByIdAndRemove({ _id: id}, (err, curriculum) => {
+        CurriculumModel.findByIdAndRemove({_id: id}, (err, curriculum) => {
             if (err) res.json(err);
             else res.json(curriculum);
         });

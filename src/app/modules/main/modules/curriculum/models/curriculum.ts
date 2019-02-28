@@ -2,6 +2,7 @@ import Job from './job';
 import Skill from './skill';
 import Degree from './degree';
 import Network from './network';
+import Hobbie from './hobbie';
 
 export default class Curriculum {
     _id: String;
@@ -15,6 +16,6 @@ export default class Curriculum {
     degrees: Degree[];
     jobs: Job[];
     skills: Skill[];
-    hobbies: String[];
+    hobbies: Hobbie[];
     networks: Network[];
 }

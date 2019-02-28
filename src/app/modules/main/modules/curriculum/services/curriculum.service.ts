@@ -15,16 +15,16 @@ export class CurriculumService {
         return this.http.get(this.url);
     }
 
-    getCurriculum(id: String) {
-        return this.http.get(`${this.url}/${id}`);
+    getCurriculum(id: String)  {
+        return this.http.get<Curriculum>(`${this.url}/${id}`);
     }
 
     addCurriculum(cv: Curriculum) {
         return this.http.post(this.url, cv);
     }
 
-    updateCurriculum(cv: Curriculum) {
-        return this.http.put(`${this.url}/${cv._id}`, cv);
+    updateCurriculum(id: String, cv: Curriculum) {
+        return this.http.put(`${this.url}/${id}`, cv);
     }
 
     deleteCurriculum(id: String) {

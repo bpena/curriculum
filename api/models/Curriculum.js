@@ -9,6 +9,12 @@ let CurriculumSchema = new Schema(
         email: { type: String },
         phone: { type: String },
         address: { type: String },
+        summary: { type: String },
+        degrees: { type: Array, "default": [] },
+        jobs: { type: Array, "default": [] },
+        skills: { type: Array, "default": [] },
+        hobbies: { type: Array, "default": [] },
+        networks: { type: Array, "default": [] }
     },
     {
         collection: 'curriculum'

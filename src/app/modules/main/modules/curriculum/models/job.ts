@@ -4,5 +4,6 @@ export default class Job {
     startYear: String;
     endMonth: String;
     endYear: String;
+    position: String;
     description: String;
 }

@@ -1,6 +1,7 @@
 export default class Degree {
-    year: String;
-    intitute: String;
+    startYear: String;
+    endYear: String;
+    institute: String;
     address: String;
     title: String;0
 }
